@@ -2,13 +2,21 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="mx-auto max-w-7xl">
-        <h1 className="text-2xl font-semibold text-gray-900">
-          Heatrace
-        </h1>
+        <header className="flex items-start justify-between">
+          <div>
+            <h1 className="text-2xl font-semibold text-gray-900">
+              Heatrace
+            </h1>
 
-        <p className="mt-1 text-sm text-gray-500">
-          AI usage intelligence
-        </p>
+            <p className="mt-1 text-sm text-gray-500">
+              AI usage intelligence
+            </p>
+          </div>
+
+          <button className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm">
+            Last 30 days
+          </button>
+        </header>
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <section className="rounded-xl border border-gray-200 bg-white p-6 lg:col-span-2">
