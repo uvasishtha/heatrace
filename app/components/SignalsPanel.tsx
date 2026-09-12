@@ -1,34 +1,40 @@
 import { signals, type Signal } from "@/app/lib/dashboard-data";
 
 const SEVERITY_STYLES: Record<Signal["severity"], string> = {
-  info: "bg-blue-50 text-blue-700",
-  warning: "bg-amber-50 text-amber-700",
-  critical: "bg-red-50 text-red-700",
+  info: "border-ash-dim",
+  warning: "border-burnt",
+  critical: "border-spark",
+};
+
+const SEVERITY_LABEL_STYLES: Record<Signal["severity"], string> = {
+  info: "text-ash-dim",
+  warning: "text-burnt",
+  critical: "text-spark",
 };
 
 export default function SignalsPanel() {
   return (
-    <aside className="rounded-xl border border-gray-200 bg-white p-6">
-      <h2 className="text-lg font-medium text-gray-900">Signals</h2>
+    <aside className="border border-line bg-char-2 p-6">
+      <p className="eyebrow">Worth a look</p>
+      <h2 className="mt-1 font-serif text-2xl italic text-bone">Signals</h2>
 
-      <p className="mt-1 text-sm text-gray-500">
-        Changes worth paying attention to.
-      </p>
-
-      <ul className="mt-6 space-y-4">
+      <ul className="mt-6 divide-y divide-line">
         {signals.map((signal) => (
-          <li key={signal.id} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+          <li
+            key={signal.id}
+            className={`border-l-2 py-4 pl-4 first:pt-0 last:pb-0 ${SEVERITY_STYLES[signal.severity]}`}
+          >
             <span
-              className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${SEVERITY_STYLES[signal.severity]}`}
+              className={`text-[10px] font-medium uppercase tracking-wider ${SEVERITY_LABEL_STYLES[signal.severity]}`}
             >
               {signal.severity}
             </span>
 
-            <p className="mt-2 text-sm font-medium text-gray-900">
+            <p className="mt-2 text-sm font-medium text-bone">
               {signal.title}
             </p>
 
-            <p className="mt-1 text-sm text-gray-500">{signal.description}</p>
+            <p className="mt-1 text-sm text-ash">{signal.description}</p>
           </li>
         ))}
       </ul>
