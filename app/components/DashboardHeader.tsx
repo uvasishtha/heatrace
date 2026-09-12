@@ -9,23 +9,28 @@ export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="flex items-start justify-between">
+    <header className="flex items-end justify-between">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Heatrace</h1>
+        <p className="eyebrow">AI usage intelligence</p>
 
-        <p className="mt-1 text-sm text-gray-500">AI usage intelligence</p>
+        <h1 className="mt-1 font-serif text-5xl italic tracking-tight text-bone">
+          Heatrace<span className="text-spark">.</span>
+        </h1>
       </div>
 
       <div className="relative">
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50"
+          className="group flex items-center gap-2 border border-line px-3.5 py-2 text-xs uppercase tracking-wide text-ash transition-colors hover:border-line-bright hover:text-bone"
         >
           {range}
+          <span className="text-ember transition-transform group-hover:translate-y-0.5">
+            {open ? "−" : "+"}
+          </span>
         </button>
 
         {open && (
-          <div className="absolute right-0 mt-2 w-40 rounded-lg border border-gray-200 bg-white py-1 shadow-lg">
+          <div className="absolute right-0 z-10 mt-1 w-44 border border-line bg-char">
             {RANGES.map((option) => (
               <button
                 key={option}
@@ -33,7 +38,11 @@ export default function DashboardHeader() {
                   setRange(option);
                   setOpen(false);
                 }}
-                className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+                className={`block w-full border-l-2 px-3.5 py-2 text-left text-xs uppercase tracking-wide transition-colors ${
+                  option === range
+                    ? "border-ember text-bone"
+                    : "border-transparent text-ash hover:border-line-bright hover:text-bone"
+                }`}
               >
                 {option}
               </button>

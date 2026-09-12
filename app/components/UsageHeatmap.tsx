@@ -2,21 +2,27 @@ import { Fragment } from "react";
 import { days, heatmapData, teams } from "@/app/lib/dashboard-data";
 
 function intensityClass(value: number) {
-  if (value >= 80) return "bg-orange-600";
-  if (value >= 60) return "bg-orange-400";
-  if (value >= 40) return "bg-orange-300";
-  if (value >= 20) return "bg-orange-200";
-  return "bg-orange-100";
+  if (value >= 80) return "bg-spark shadow-[0_0_10px_-1px_var(--color-spark)]";
+  if (value >= 60) return "bg-ember";
+  if (value >= 40) return "bg-burnt";
+  if (value >= 20) return "bg-crimson";
+  return "bg-char-2";
 }
 
 export default function UsageHeatmap() {
   return (
-    <section className="rounded-xl border border-gray-200 bg-white p-6 lg:col-span-2">
-      <h2 className="text-lg font-medium text-gray-900">AI Usage</h2>
-
-      <p className="mt-1 text-sm text-gray-500">
-        Understand how your teams are using AI.
-      </p>
+    <section className="border border-line bg-char p-6 lg:col-span-2">
+      <div className="flex items-baseline justify-between">
+        <div>
+          <p className="eyebrow">Fourteen-day view</p>
+          <h2 className="mt-1 font-serif text-2xl italic text-bone">
+            AI Usage
+          </h2>
+        </div>
+        <p className="max-w-[16rem] text-right text-xs text-ash-dim">
+          How hard each team is running AI, day by day.
+        </p>
+      </div>
 
       <div className="mt-6 overflow-x-auto">
         <div className="min-w-max">
@@ -30,7 +36,7 @@ export default function UsageHeatmap() {
             {days.map((day) => (
               <div
                 key={day}
-                className="text-center text-[10px] text-gray-400"
+                className="text-center text-[10px] text-ash-dim"
               >
                 {new Date(day).toLocaleDateString(undefined, {
                   month: "numeric",
@@ -41,7 +47,7 @@ export default function UsageHeatmap() {
 
             {teams.map((team) => (
               <Fragment key={team.id}>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-ash">
                   {team.name}
                 </div>
 
@@ -54,7 +60,7 @@ export default function UsageHeatmap() {
                     <div
                       key={`${team.id}-${day}`}
                       title={`${team.name} · ${day} · ${cell?.value ?? 0}`}
-                      className={`h-6 w-6 rounded ${intensityClass(cell?.value ?? 0)}`}
+                      className={`h-6 w-6 ${intensityClass(cell?.value ?? 0)}`}
                     />
                   );
                 })}
@@ -64,14 +70,14 @@ export default function UsageHeatmap() {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center gap-2 text-xs text-gray-400">
-        <span>Less</span>
-        <div className="h-3 w-3 rounded bg-orange-100" />
-        <div className="h-3 w-3 rounded bg-orange-200" />
-        <div className="h-3 w-3 rounded bg-orange-300" />
-        <div className="h-3 w-3 rounded bg-orange-400" />
-        <div className="h-3 w-3 rounded bg-orange-600" />
-        <span>More</span>
+      <div className="mt-5 flex items-center gap-2 text-xs text-ash-dim">
+        <span>Cold</span>
+        <div className="h-3 w-3 bg-char-2" />
+        <div className="h-3 w-3 bg-crimson" />
+        <div className="h-3 w-3 bg-burnt" />
+        <div className="h-3 w-3 bg-ember" />
+        <div className="h-3 w-3 bg-spark" />
+        <span>Hot</span>
       </div>
     </section>
   );
