@@ -4,6 +4,8 @@
 
 Heatrace helps companies understand how employees are using AI, where usage is increasing, and what changes are worth investigating.
 
+SITE: https://heatrace.vercel.app/
+
 Unlike all-in-one AI optimization tools, Heatrace focuses on one core idea: **a heatmap that makes employee AI usage visible across teams and time.**
 
 ## MVP
