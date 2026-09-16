@@ -1,7 +1,7 @@
-import DashboardHeader from "@/app/components/DashboardHeader";
-import StatsRow from "@/app/components/StatsRow";
-import UsageHeatmap from "@/app/components/UsageHeatmap";
-import SignalsPanel from "@/app/components/SignalsPanel";
+import DashboardHeader from "@/components/DashboardHeader";
+import StatsRow from "@/components/StatsRow";
+import UsageHeatmap from "@/components/UsageHeatmap";
+import SignalsPanel from "@/components/SignalsPanel";
 
 export default function Home() {
   return (
