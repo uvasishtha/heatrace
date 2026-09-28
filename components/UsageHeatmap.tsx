@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Fragment } from "react";
 import { days, heatmapData, teams } from "@/app/lib/dashboard-data";
 
@@ -19,6 +20,7 @@ export default function UsageHeatmap() {
             AI Usage
           </h2>
         </div>
+
         <p className="max-w-[16rem] text-right text-xs text-ash-dim">
           How hard each team is running AI, day by day.
         </p>
@@ -33,6 +35,7 @@ export default function UsageHeatmap() {
             }}
           >
             <div />
+
             {days.map((day) => (
               <div
                 key={day}
@@ -56,11 +59,17 @@ export default function UsageHeatmap() {
                     (c) => c.teamId === team.id && c.day === day,
                   );
 
+                  const value = cell?.value ?? 0;
+
                   return (
-                    <div
+                    <Link
                       key={`${team.id}-${day}`}
-                      title={`${team.name} · ${day} · ${cell?.value ?? 0}`}
-                      className={`h-6 w-6 ${intensityClass(cell?.value ?? 0)}`}
+                      href={`/usage?team=${team.id}&day=${day}`}
+                      aria-label={`View ${team.name} usage on ${day}`}
+                      title={`${team.name} · ${day} · ${value}`}
+                      className={`h-6 w-6 transition-transform hover:scale-125 hover:ring-1 hover:ring-bone/50 ${intensityClass(
+                        value,
+                      )}`}
                     />
                   );
                 })}
