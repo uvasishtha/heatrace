@@ -8,7 +8,19 @@ export type HeatmapCell = {
   day: string;
   value: number;
 };
+export type ToolUsage = {
+  name: string;
+  percentage: number;
+};
 
+export type UsageDetail = {
+  teamId: string;
+  day: string;
+  interactions: number;
+  estimatedSpend: number;
+  change: number;
+  tools: ToolUsage[];
+};
 export type Signal = {
   id: string;
   title: string;
@@ -62,6 +74,68 @@ export const heatmapData: HeatmapCell[] = (() => {
   );
 })();
 
+function usageRandom(teamId: string, day: string) {
+  const seed =
+    teamId.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0) +
+    day.split("-").join("").split("").reduce((sum, char) => sum + Number(char), 0);
+
+  return mulberry32(seed);
+}
+
+export function getUsageDetail(
+  teamId: string,
+  day: string,
+): UsageDetail | null {
+  const team = teams.find((team) => team.id === teamId);
+
+  if (!team || !days.includes(day)) {
+    return null;
+  }
+
+  const cell = heatmapData.find(
+    (item) => item.teamId === teamId && item.day === day,
+  );
+
+  if (!cell) {
+    return null;
+  }
+
+  const random = usageRandom(teamId, day);
+
+  const interactions = Math.round(400 + cell.value * 22 + random() * 300);
+
+  const estimatedSpend = Number(
+    (interactions * (0.025 + random() * 0.025)).toFixed(2),
+  );
+
+  const change = Math.round(-10 + random() * 60);
+
+  const claude = Math.round(35 + random() * 30);
+  const chatgpt = Math.round(20 + random() * 25);
+  const gemini = 100 - claude - chatgpt;
+
+  return {
+    teamId,
+    day,
+    interactions,
+    estimatedSpend,
+    change,
+    tools: [
+      {
+        name: "Claude",
+        percentage: claude,
+      },
+      {
+        name: "ChatGPT",
+        percentage: chatgpt,
+      },
+      {
+        name: "Gemini",
+        percentage: gemini,
+      },
+    ],
+  };
+}
 export const stats: Stat[] = [
   {
     id: "active-users",
