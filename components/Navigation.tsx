@@ -8,6 +8,8 @@ const navItems = [
   { href: "/deployments", label: "Deployments" },
   { href: "/services", label: "Services" },
   { href: "/regressions", label: "Regressions" },
+  { href: "/signals", label: "Signals" },
+  { href: "/usage", label: "Usage" },
   { href: "/settings", label: "Settings" },
 ];
 
