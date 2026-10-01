@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const RANGES = ["Last 7 days", "Last 30 days", "Last 90 days"];
+const RANGES = ["Last 24 hours", "Last 7 days", "Last 30 days"];
 
 export default function DashboardHeader() {
   const [range, setRange] = useState(RANGES[1]);
@@ -11,7 +11,7 @@ export default function DashboardHeader() {
   return (
     <header className="flex items-end justify-between">
       <div>
-        <p className="eyebrow">AI usage intelligence</p>
+        <p className="eyebrow">Deployment intelligence</p>
 
         <h1 className="mt-1 font-serif text-5xl italic tracking-tight text-bone">
           Heatrace<span className="text-spark">.</span>

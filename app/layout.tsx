@@ -20,8 +20,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Heatrace — AI Usage Intelligence",
-  description: "Track how your teams actually use AI, day by day.",
+  title: "Heatrace — Deployment Intelligence",
+  description: "Connect GitHub deployments with Datadog telemetry to detect production regressions.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
