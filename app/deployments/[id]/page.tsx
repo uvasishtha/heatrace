@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { getDeploymentById, getMetricSnapshots, getRegressionsByDeployment } from "@/app/lib/deployment-data";
 import Link from "next/link";
@@ -119,7 +119,7 @@ function SparklineChart({ data, metric, deploymentMarkerIndex }: { data: number[
 export default function DeploymentDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [metricView, setMetricView] = useState<"error-rate" | "p95-latency" | "http-5xx">("error-rate");
   
-  const deploymentId = parseInt((params as any).id || (params as any).then?.((p: any) => p.id) || "284", 10);
+  const deploymentId = parseInt(use(params).id, 10);
   const deployment = getDeploymentById(deploymentId);
   const metrics = getMetricSnapshots(deploymentId);
   const regressions = getRegressionsByDeployment(deploymentId);

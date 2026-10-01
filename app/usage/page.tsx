@@ -176,7 +176,7 @@ export default async function UsagePage({
               </p>
               <p className="mt-1 text-xs text-ash-dim">
                 It represents {usage.tools[0].percentage}% of this
-                team's AI activity.
+                team&rsquo;s AI activity.
               </p>
             </div>
           </div>
