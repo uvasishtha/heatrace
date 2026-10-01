@@ -22,6 +22,13 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
+function sortValue(value: unknown): string | number {
+  if (value == null) return "";
+  if (typeof value === "number") return value;
+  if (typeof value === "string") return value;
+  return String(value);
+}
+
 export default function DeploymentsPage() {
   const [statusFilter, setStatusFilter] = useState<typeof STATUSES[number]>("all");
   const [serviceFilter, setServiceFilter] = useState<typeof SERVICES[number]>("all");
@@ -48,8 +55,8 @@ export default function DeploymentsPage() {
         return true;
       })
       .sort((a, b) => {
-        const aVal = a[sortConfig.key as keyof typeof a];
-        const bVal = b[sortConfig.key as keyof typeof b];
+        const aVal = sortValue(a[sortConfig.key as keyof typeof a]);
+        const bVal = sortValue(b[sortConfig.key as keyof typeof b]);
         if (aVal < bVal) return sortConfig.direction === "asc" ? -1 : 1;
         if (aVal > bVal) return sortConfig.direction === "asc" ? 1 : -1;
         return 0;
