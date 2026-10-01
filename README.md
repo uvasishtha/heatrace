@@ -1,18 +1,20 @@
 # Heatrace
 
-> AI usage heatmap for employers.
+> Deployment intelligence for engineering teams.
 
-Heatrace helps companies understand how employees are using AI, where usage is increasing, and what changes are worth investigating.
+Heatrace connects **GitHub deployment activity with Datadog production telemetry** to help engineering teams identify and investigate potential production regressions.
 
-SITE: https://heatrace.vercel.app/
+Instead of viewing code changes and production metrics separately, Heatrace correlates deployments with changes in error rates, latency, and other service-level metrics.
 
-Unlike all-in-one AI optimization tools, Heatrace focuses on one core idea: **a heatmap that makes employee AI usage visible across teams and time.**
+**Site:** https://heatrace.vercel.app/
 
 ## MVP
 
-- 🔥 AI Usage Heatmap — visualize AI activity across teams and time
-- 🚨 Signals — highlight spend spikes, prompt growth, and unusual usage patterns
-- 🔎 Drill-downs — understand what is driving changes in usage
+- 🚀 **Deployment Tracking** — visualize GitHub deployments, pull requests, commits, and code changes
+- 📊 **Telemetry Correlation** — connect deployments with Datadog production metrics
+- 🚨 **Regression Detection** — identify significant changes in error rates, latency, and HTTP 5xx responses after deployments
+- 🔎 **Deployment Drill-downs** — investigate code changes alongside their production impact
+- 🔥 **Service Health** — visualize service health and deployment activity across time
 
 ## Tech Stack
 
@@ -20,15 +22,18 @@ Unlike all-in-one AI optimization tools, Heatrace focuses on one core idea: **a 
 - React
 - TypeScript
 - Tailwind CSS
-- PostgreSQL (planned)
-- Python / ML (planned)
-- Vercel (planned)
+- PostgreSQL
+- GitHub REST API
+- Datadog API
+- Python
+- GitHub Actions
+- Vercel
 
 ## Status
 
 🚧 In progress
 
-Currently building the frontend MVP with simulated AI usage data.
+Currently building the frontend MVP with simulated GitHub deployment and Datadog telemetry data. Real API integrations and data ingestion are planned.
 
 ## Development
 
