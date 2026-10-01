@@ -3,6 +3,7 @@
 :root {
   --color-void: #0a0807;
   --color-char: #161211;
+  --color-char-1: #1a1514;
   --color-char-2: #1d1716;
   --color-line: #2b211e;
   --color-line-bright: #3d2b26;
@@ -20,6 +21,7 @@
 @theme inline {
   --color-void: var(--color-void);
   --color-char: var(--color-char);
+  --color-char-1: var(--color-char-1);
   --color-char-2: var(--color-char-2);
   --color-line: var(--color-line);
   --color-line-bright: var(--color-line-bright);
