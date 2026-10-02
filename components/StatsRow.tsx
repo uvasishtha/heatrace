@@ -2,7 +2,7 @@ import { overviewStats } from "@/app/lib/deployment-data";
 
 export default function StatsRow() {
   return (
-    <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line lg:grid-cols-3">
       {overviewStats.map((stat) => (
         <div
           key={stat.id}

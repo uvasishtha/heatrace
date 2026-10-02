@@ -407,14 +407,7 @@ export const overviewStats = [
     change: "0",
     trend: "up" as const,
   },
-  {
-    id: "success-rate",
-    label: "Deployment Success Rate",
-    value: "94.6%",
-    change: "-1.2%",
-    trend: "down" as const,
-  },
-];
+  ];
 
 export const recentDeployments = deployments.slice(0, 10);
 
